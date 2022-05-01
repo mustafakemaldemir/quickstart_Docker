@@ -1,8 +1,9 @@
+~~~~~~~~~~LINUX SCREEN COMMANDS~~~~~~~~~~
 screen
 screen -ls
 screen -d <screen_id> (detach screen)
 screen -r <screen_id> (attach screen)
-####################
+~~~~~~~~~~LINUX DOCKER COMMANDS~~~~~~~~~~
 docker images
 docker ps -a
 docker run
