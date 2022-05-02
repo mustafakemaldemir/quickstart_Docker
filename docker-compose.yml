@@ -1,0 +1,30 @@
+version: '2.4.1'
+
+services:
+  python:
+    build:
+      context: <project_path>
+      dockerfile: <dockerfile_path>
+    #image: <image_name>
+    container_name: <container_name>
+    tty: true
+    #working_dir: <container_work_path>
+    volumes:
+      - hostPath:containerPath
+    networks:
+      - project_bridge
+
+  nginx:
+    image: nginx:1.21.6
+    container_name: my_nginx
+    tty: true
+    volumes:
+      - hostPath:containerPath
+    ports:
+      - 8080:80
+    networks:
+      - project_bridge
+
+networks:
+  project_bridge:
+    driver: bridge

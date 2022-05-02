@@ -1,27 +1,59 @@
 ~~~~~~~~~~LINUX SCREEN COMMANDS~~~~~~~~~~
+
 screen
 screen -ls
 screen -d <screen_id> (detach screen)
 screen -r <screen_id> (attach screen)
+
 ~~~~~~~~~~LINUX DOCKER COMMANDS~~~~~~~~~~
+
+sudo apt-get install docker-compose
+docker compose version (check version)
+
+docker pull <docker_hub_pull_name>
+
 docker images
-docker ps -a
-docker run
-docker pull
-docker run -it ubuntu (ubuntu image ile oluşturulan container ın içine girer) (-it interactive terminali açmak için kullanılır)
-docker run --name my_ubuntu ubuntu (container isimlendirme)
+docker ps -a (list all containers)
+docker inspect <container_id> or <image_id> (show detail features)
+
 docker rm <id> (remove cont) or docker rm -f <id> (çalışan bir container silmek için force parametresi kullanılır)
 docker rmi <id> (remove images) or docker image rm <id> (remove images)
+docker container rm $(docker container ls -aq) (bütün açılmış containerları siler)
+
+docker run -it ubuntu (ubuntu image ile oluşturulan container ın içine girer) (-it interactive terminali açmak için kullanılır)
+docker run --name my_ubuntu ubuntu (container isimlendirme)
+
 docker run --name my_nginx_server -d -P nginx (-P portu dışarı açmak için)
 docker run --name my_nginx_server -v /var/www:/usr/share/nginx/html:ro -P -d nginx (container ile cihaz arasında ortak dosya dizini paylaşmak)
+
+docker run redis:5 (redis'in 5. sürümünü almak için tag verdik) (decker hub dan taglere ulaşılır)
+
 docker start <container_id> (arka planda çalışmaya devam ediyor)
 docker stop <container_id> (çalışan container stop edilir)
-docker container rm $(docker container ls -aq) (bütün açılmış containerları siler)
-docker run redis:5 (redis'in 5. sürümünü almak için tag verdik) (decker hub dan taglere ulaşılır)
+
 docker image tag ubuntu my_ubuntu (ubuntu image'ine tag verdik) (indirme dosyası hazırlanırken sürüm belirtmede kullanılır) (dockerhubda ubuntu sürümlerine bakarak tag ver)
+
 docker run -d redis (logları görmeden detach modda çalıştırmaya devam eder)
 docker attach <container_id> (detach moda alınmış containerı attach moda alır)
 docker container logs <container_id> (detach modda çalışan containerdan logları görmek için kullanılır)
+
 docker run -p <user_pc_port>:<image_default_port> nginx (bilgisayarın 8080 portu ile containerdaki nginx in 8081 portu haberleşir. Container dışarı açılır.)
+
+docker run --name mysql_server -d -p <host_port>:<image_default_port> -e MYSQL_ROOT_PASSW0RD=mysql mysql
+docker run --name phpmyadmin -d -p 8080:80 --link mysql-server:db phpmyadmin (oluşturulan my_sql adındaki containerı link ettik)
+
+docker run --name mysql_server -p 3306:3306 -v /usr/bin:/etc/mysql/conf.d -e MYSQL_ROOT_PASSW0RD=mysql -d mysql 
+(volume oluşturarak container içinde yapılacak değişiklerin kaydedilmesi sağlandı.)
+docker run --name phpmyadmin -d -p 8080:80 --link mysql-server:db phpmyadmin
+
+docker-compose up -d (compose yml dosyasını ayağa kaldırır)
+docker-compose exec <container_name> bash (container bashine girmek için)
+docker-compose build --no--cache (0 dan dockerfile daki değişiklikleri build etmek için)
+
+
+
+
+
+
 
 
