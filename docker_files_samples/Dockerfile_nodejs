@@ -1,0 +1,10 @@
+FROM node: 14
+WORKDIR <container-project-path>
+COPY <project-path> .
+RUN npm install
+RUN npm install -g live-server
+RUN npm run build
+EXPOSE 8080
+#CMD ["live-server","-p","8080","dist"]
+#CMD live-server  -p 8090 dist
+CMD ["live-server","dist"]

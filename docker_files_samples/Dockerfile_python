@@ -1,0 +1,12 @@
+FROM python: 3.8-slim
+
+WORKDIR <container-project-path>
+
+#WORKDIR tanımlandığı için container artık o klasör içersinde olduğından destination path "." olarak yazılır
+COPY <project-path> .
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+CMD ["python" , "python_file.py"]

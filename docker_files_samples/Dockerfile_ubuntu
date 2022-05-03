@@ -1,0 +1,22 @@
+FROM ubuntu:20.04
+
+RUN apt update
+
+RUN apt upgrade
+
+RUN apt-get update && apt-get upgrade
+
+RUN apt-get install curl
+
+RUN curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+
+RUN apt-get install -y nodejs
+
+WORKDIR <work on directory path>
+
+#copy project files to images destination folder
+COPY <source_project_path> <destination_image_folder>
+
+CMD ["python" , "<executable python file path>"]
+
+

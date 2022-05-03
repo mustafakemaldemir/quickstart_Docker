@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  my-app:
+    container_name: my-app-container
+    build: <docker_file_path>
+    ports:
+      - 8080:80
+  my-app-database:
+    image: postgres:13.6
+    container_name: my-app-database-container  
+    ports:
+      - 1500:1500
+    volumes:
+      - keepdata:<container_path>
+  volumes:
+    keedata:      

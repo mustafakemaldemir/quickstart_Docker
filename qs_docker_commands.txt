@@ -20,6 +20,7 @@ docker inspect <container_id> or <image_id> (show detail features)
 docker rm <id> (remove cont) or docker rm -f <id> (çalışan bir container silmek için force parametresi kullanılır)
 docker rmi <id> (remove images) or docker image rm <id> (remove images)
 docker container rm $(docker container ls -aq) (bütün açılmış containerları siler)
+docker container prune (bütün containerları siler) (imageler içinde geçerlidir)
 
 docker run -it ubuntu (ubuntu image ile oluşturulan container ın içine girer) (-it interactive terminali açmak için kullanılır)
 docker run --name my_ubuntu ubuntu (container isimlendirme)
@@ -48,13 +49,14 @@ docker run --name mysql_server -p 3306:3306 -v /usr/bin:/etc/mysql/conf.d -e MYS
 docker run --name phpmyadmin -d -p 8080:80 --link mysql-server:db phpmyadmin
 
 docker-compose up -d (compose yml dosyasını ayağa kaldırır)
+docker-compose down
 docker-compose exec <container_name> bash (container bashine girmek için)
 docker-compose build --no--cache (0 dan dockerfile daki değişiklikleri build etmek için)
 
+docker network ls
+docker network create --driver bridge --subnet 100.100.0.1/24 --gateway 100.100.0.1 my_network
+docker run --name <container_name> --net <custom_network_name> -d <docker_image_name>
 
-
-
-
-
-
-
+docker build <docker_file_path> -t my_ubuntu_image (Dockerfile build etmek için kullanılır)
+docker build --no--cache <docker_file_path> -t my_ubuntu_image (Dockerfile build etmek için kullanılır)
+docker run -p 8000:8000 my_ubuntu_image
