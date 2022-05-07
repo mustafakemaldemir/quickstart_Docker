@@ -22,7 +22,7 @@ docker rmi <id> (remove images) or docker image rm <id> (remove images)
 docker container rm $(docker container ls -aq) (bütün açılmış containerları siler)
 docker container prune (bütün containerları siler) (imageler içinde geçerlidir)
 
-docker run -it ubuntu (ubuntu image ile oluşturulan container ın içine girer) (-it interactive terminali açmak için kullanılır)
+docker run -it ubuntu (ubuntu image ile container oluşturur ve interactive terminale girer başlatır.) (-it interactive terminali açmak için kullanılır)
 docker run --name my_ubuntu ubuntu (container isimlendirme)
 
 docker run --name my_nginx_server -d -P nginx (-P portu dışarı açmak için)
@@ -30,10 +30,11 @@ docker run --name my_nginx_server -v /var/www:/usr/share/nginx/html:ro -P -d ngi
 
 docker run redis:5 (redis'in 5. sürümünü almak için tag verdik) (decker hub dan taglere ulaşılır)
 
-docker start <container_id> (arka planda çalışmaya devam ediyor)
+docker start <container_id> (daha önce oluşturulan containerı arka planda çalıştırmaya başlar)
+docker start -i <container_id> (daha önce oluşturulan containerın interactive terminaline giriş yaparak çalıştırır.)
 docker stop <container_id> (çalışan container stop edilir)
 
-docker image tag ubuntu my_ubuntu (ubuntu image'ine tag verdik) (indirme dosyası hazırlanırken sürüm belirtmede kullanılır) (dockerhubda ubuntu sürümlerine bakarak tag ver)
+docker image tag ubuntu my_ubuntu (ubuntu image'ine tag verdik) (indirme dosyası hazırlanırken sürüm belirtmede kullanılır) (dockerhubda ubuntu sürüm tagleri vardır)
 
 docker run -d redis (logları görmeden detach modda çalıştırmaya devam eder)
 docker attach <container_id> (detach moda alınmış containerı attach moda alır)
