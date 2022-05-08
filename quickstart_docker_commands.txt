@@ -30,6 +30,7 @@ docker run --name my_nginx_server -v /var/www:/usr/share/nginx/html:ro -P -d ngi
 
 docker run redis:5 (redis'in 5. sürümünü almak için tag verdik) (decker hub dan taglere ulaşılır)
 
+docker rename <old_container_name> <new_container_name>
 docker start <container_id> (daha önce oluşturulan containerı arka planda çalıştırmaya başlar)
 docker start -i <container_id> (daha önce oluşturulan containerın interactive terminaline giriş yaparak çalıştırır.)
 docker stop <container_id> (çalışan container stop edilir)
